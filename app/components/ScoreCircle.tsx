@@ -1,6 +1,6 @@
 const ScoreCircle = ({ score = 75 }: { score: number }) => {
-  const radius = 40;
-  const stroke = 8;
+  const radius = 34;
+  const stroke = 6;
   const normalizedRadius = radius - stroke / 2;
   const circumference = 2 * Math.PI * normalizedRadius;
   const progress = score / 100;
@@ -12,7 +12,7 @@ const ScoreCircle = ({ score = 75 }: { score: number }) => {
         height="100%"
         width="100%"
         viewBox="0 0 100 100"
-        className="transform -rotate-90"
+        className="transform -rotate-90 block"
       >
         {/* Background circle */}
         <circle
