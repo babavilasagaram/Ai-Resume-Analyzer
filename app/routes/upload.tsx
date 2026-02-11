@@ -20,7 +20,7 @@ const Upload = () => {
 
   useEffect(() => {
   if (
-    !isProcessing &&                 // ✅ important
+    !isProcessing &&                
     puterReady &&
     !isLoading &&
     !auth.isAuthenticated
@@ -71,7 +71,6 @@ const Upload = () => {
       setIsprocessing(false);
       return;
     }
-    // fdgfhgjhhgdfs
     setStatusText("Reading resume content...");
 
 const resumeText = await ai.img2txt(imageFile.file);
@@ -83,7 +82,6 @@ if (!resumeText || resumeText.length < 50) {
   setIsprocessing(false);
   return;
 }
-//wertyu
     setStatusText("Preparing data...");
 
     const uuid = generateUUID();
@@ -91,7 +89,7 @@ if (!resumeText || resumeText.length < 50) {
     const data = {
       id: uuid,
       resumepath: uploadedFile.path,
-      ImagePath: uploadedImage.path,
+      imagePath: uploadedImage.path,
       companyName,
       jobTitle,
       jobDescription,
