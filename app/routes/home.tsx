@@ -23,6 +23,7 @@ export default function Home() {
     const navigate:NavigateFunction = useNavigate();
 
 
+
   return (
 <main className="bg-[url('/images/bg-main.svg')] bg-cover bg-no-repeat bg-center">
       <Navbar />
