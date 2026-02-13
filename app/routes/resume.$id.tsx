@@ -2,6 +2,9 @@ import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { usePuterStore } from "~/lib/puter";
 import Navbar from "~/components/Navbar";
+import Summary from "~/components/summary";
+import ATS from "~/components/ATS";
+import Details from "~/components/Details";
 
 export const meta = () => ([
     {title:"ResuMate | Review" },
@@ -13,7 +16,7 @@ export default function ResumeResult() {
   const { kv } = usePuterStore();
   const [resumeUrl , setResumeUrl] = useState('');
   const [imageUrl , setImageUrl] = useState('');
-  const [feedback , setFeedback] = useState('');
+  const [feedback , setFeedback] = useState<Feedback | null>(null);
   const { auth , isLoading ,fs } = usePuterStore()
   const navigate = useNavigate();
 
@@ -80,7 +83,9 @@ export default function ResumeResult() {
             <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
             {feedback ? (
               <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
-                Summary ATS Details
+                <Summary feedback={feedback} />
+                <ATS score={feedback.ATS.score || 0 } suggestions={feedback.ATS.tips || [] } />
+                <Details feedback={feedback} />
               </div>
             ) : (
                 <img src="/images/resume-scan-2.gif" className="w-full" />
